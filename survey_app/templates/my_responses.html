@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Responses</title>
+</head>
+<body>
+    <h1>My Survey Responses</h1>
+
+    <ul>
+        {% for response in responses %}
+            <li>
+                <p><strong>{{ response.survey.survey_type.name }}</strong> ({{ response.survey.step.name }}): {{ response.survey.question }}</p>
+                <p><strong>Score:</strong> {{ response.score }}</p>
+                <p><strong>Comments:</strong> {{ response.comments }}</p>
+                <p><em>Submitted on: {{ response.created_at }}</em></p>
+                <hr>
+            </li>
+        {% empty %}
+            <p>You haven't submitted any responses yet.</p>
+        {% endfor %}
+    </ul>
+
+    <!-- Use the dynamic step_id here -->
+    <a href="{% url 'survey_list' step_id %}">Back to Surveys</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- templates/survey/submit_response.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Response</title>
+</head>
+<body>
+    <h1>Respond to Survey</h1>
+
+    <p><strong>{{ survey.survey_type.name }}</strong>: {{ survey.question }}</p>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!--<a href="{% url 'survey_list' survey.step.id %}">Back to Surveys</a>-->
+    <a href="{% url 'survey_list' step_id %}">Back to Surveys</a>
+</body>
+</html>

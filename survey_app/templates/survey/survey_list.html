@@ -1,0 +1,25 @@
+<!-- templates/survey/survey_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey List</title>
+</head>
+<body>
+    <h1>Surveys for Value Chain Step</h1>
+
+    <ul>
+        {% for survey in surveys %}
+            <li>
+                <strong>{{ survey.survey_type.name }}</strong>: {{ survey.question }}
+                <a href="{% url 'submit_response' survey.id %}">Respond</a>  <!-- Correct URL for submit_response -->
+            </li>
+        {% empty %}
+            <p>No surveys available for this step.</p>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'my_responses' %}">My Responses</a>
+</body>
+</html>
